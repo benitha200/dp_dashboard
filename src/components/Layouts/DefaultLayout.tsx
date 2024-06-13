@@ -11,8 +11,9 @@ export default function DefaultLayout({
   const [sidebarOpen, setSidebarOpen] = useState(false);
   return (
     <>
-      {/* <!-- ===== Page Wrapper Start ===== --> */}
-      <div className="flex h-screen overflow-hidden">
+      <div className="flex flex-col h-screen overflow-hidden">
+        {/* <!-- ===== Page Wrapper Start ===== --> */}
+      <div className="flex  overflow-hidden">
         {/* <!-- ===== Sidebar Start ===== --> */}
         <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         {/* <!-- ===== Sidebar End ===== --> */}
@@ -29,11 +30,18 @@ export default function DefaultLayout({
               {children}
             </div>
           </main>
+          
           {/* <!-- ===== Main Content End ===== --> */}
         </div>
+        
         {/* <!-- ===== Content Area End ===== --> */}
       </div>
+      <div className="bg-dark text-center m-5">
+          Copyright @ 2024
+        </div>
       {/* <!-- ===== Page Wrapper End ===== --> */}
+      </div>
+      
     </>
   );
 }

@@ -12,6 +12,25 @@
 
 @layer components {
 }
+.custom-panel-menu .p-menuitem {
+    padding: 10px; /* Adjust the padding as needed */
+    margin-bottom: 10px; /* Adjust the margin to add space between items */
+}
+
+.custom-panel-menu .p-menuitem-link {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.custom-panel-menu .p-menuitem-link:hover {
+    background-color: #f0f0f0; /* Change to your desired hover color */
+}
+.p-panelmenu-panel{
+    padding: 1rem;
+}
+
 
 @layer utilities {
     /* Chrome, Safari and Opera */
@@ -32,6 +51,8 @@
         @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
     }
 }
+
+
 
 /* third-party libraries CSS */
 

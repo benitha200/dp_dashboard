@@ -4,11 +4,15 @@ import DropdownMessage from "./DropdownMessage";
 import DropdownNotification from "./DropdownNotification";
 import DropdownUser from "./DropdownUser";
 import Image from "next/image";
+import Cookies from 'js-cookie';
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
+
+
+
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
@@ -67,7 +71,7 @@ const Header = (props: {
         </div>
 
         <div className="hidden sm:block">
-          <form action="https://formbold.com/s/unique_form_id" method="POST">
+          {/* <form action="https://formbold.com/s/unique_form_id" method="POST">
             <div className="relative">
               <button className="absolute left-0 top-1/2 -translate-y-1/2">
                 <svg
@@ -99,7 +103,10 @@ const Header = (props: {
                 className="w-full bg-transparent pl-9 pr-4 font-medium focus:outline-none xl:w-125"
               />
             </div>
-          </form>
+          </form> */}
+          <span className="text-2xl font-bold">
+          Guard Your Data, Guard Your Success
+          </span>
         </div>
 
         <div className="flex items-center gap-3 2xsm:gap-7">
@@ -108,17 +115,29 @@ const Header = (props: {
             <DarkModeSwitcher />
             {/* <!-- Dark Mode Toggler --> */}
 
+            <div>
+              Welcome <span className="font-bold">{Cookies.get("username")}</span>
+            </div>
+
+            <button
+              className="bg-primary text-white p-3 rounded"
+              onClick={() => window.location.href = "http://localhost:3000"}
+            >
+              Logout
+            </button>
+
+
             {/* <!-- Notification Menu Area --> */}
-            <DropdownNotification />
+            {/* <DropdownNotification /> */}
             {/* <!-- Notification Menu Area --> */}
 
             {/* <!-- Chat Notification Area --> */}
-            <DropdownMessage />
+            {/* <DropdownMessage /> */}
             {/* <!-- Chat Notification Area --> */}
           </ul>
 
           {/* <!-- User Area --> */}
-          <DropdownUser />
+          {/* <DropdownUser /> */}
           {/* <!-- User Area --> */}
         </div>
       </div>
