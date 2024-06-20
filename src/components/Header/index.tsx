@@ -121,7 +121,7 @@ const Header = (props: {
 
             <button
               className="bg-primary text-white p-3 rounded"
-              onClick={() => window.location.href = "http://localhost:3000"}
+              onClick={() => window.location.href = "http://localhost:3005"}
             >
               Logout
             </button>

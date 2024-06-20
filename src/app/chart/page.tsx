@@ -5,13 +5,44 @@ import { useRouter } from 'next/navigation';
 import Cookies from 'cookies-js';
 import ChartTwo from '@/components/Charts/ChartTwo';
 import ChartOne from '@/components/Charts/ChartOne';
+import { useState,useEffect } from 'react';
+
+interface Course {
+  _id: string; 
+  title: string; 
+  desc: string; 
+  imageUrl: string; 
+}
 
 const BasicChartPage: React.FC = () => {
   const router = useRouter();
+  const [courses,setCourses]=useState<Course[]>([]);
+    useEffect(() => {
+      
+      const get_courses = () => {
+        const myHeaders = new Headers();
+        myHeaders.append("Authorization", `${Cookies.get('token')}`);
+        const formdata = new FormData();
+        const requestOptions = {
+          method: "GET",
+          headers: myHeaders,
+        };
+  
+        fetch("http://localhost:5000/api/course/all", requestOptions)
+          .then((response) => response.json())
+          .then((result) => {
+            console.log(result);
+            setCourses(result);
+          })
+          .catch((error) => console.error(error));
+      };
+  
+      get_courses();
+    }, []);
 
-  const Card: React.FC<{ imageUrl: string; title: string; description: string }> = ({ imageUrl, title, description }) => {
+  const Card: React.FC<{ imageUrl: string; title: string; description: string,id: string }> = ({ imageUrl, title, description,id }) => {
     const handleGetStarted = () => {
-      router.push(`/calendar?title=${encodeURIComponent(title)}`);
+      router.push(`/calendar?id=${encodeURIComponent(id)}`);
     };
 
     return (
@@ -26,7 +57,7 @@ const BasicChartPage: React.FC = () => {
     );
   };
 
-  if(Cookies.get("role")=="Admin"){
+  if(Cookies.get("role")=="admin"){
     return(
       <DefaultLayout>
         <div className="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
@@ -244,7 +275,21 @@ const BasicChartPage: React.FC = () => {
   else{
     return (
     <DefaultLayout>
-      <div className="mx-auto max-w-7xl p-4">
+       <div className="mx-auto max-w-7xl p-4">
+        <h1 className="text-3xl font-bold mb-4"><center>Explore Courses</center></h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {courses && courses.map((course, index) => (
+          <Card
+            key={index}
+            id={course._id} // Add a unique key prop for each item in the list
+            imageUrl={course.imageUrl}
+            title={course.title}
+            description={course.desc}
+          />
+        ))}
+        </div>
+      </div>
+      {/* <div className="mx-auto max-w-7xl p-4">
         <h1 className="text-3xl font-bold mb-4"><center>Explore Courses</center></h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <Card
@@ -263,7 +308,7 @@ const BasicChartPage: React.FC = () => {
             description="Understand the key concepts and practices in data processing."
           />
         </div>
-      </div>
+      </div> */}
     </DefaultLayout>
   );
   }

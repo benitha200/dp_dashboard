@@ -62,7 +62,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
   }, [sidebarExpanded]);
 
 
-  if(Cookies.get("role") !=="Admin"){
+  if(Cookies.get("role") !=="admin"){
      return (
     <aside
       ref={sidebar}
@@ -217,7 +217,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </li>
               <li>
                 <Link
-                  href="/calendar"
+                  href="/courses"
                   className={`group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
                     pathname.includes("calendar") &&
                     "bg-graydark dark:bg-meta-4"
@@ -741,7 +741,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
         {/* <!-- SIDEBAR HEADER --> */}
         <div className="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
           <Link href="/">
-            <p className="text-3xl font-bold text-slate-50">DP Training</p>
+            <p className="text-3xl font-bold text-slate-50">DP Portal</p>
           </Link>
   
           <button
@@ -940,9 +940,9 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 {/* <!-- Menu Item Profile --> */}
   
                 {/* <!-- Menu Item Forms --> */}
-                {/* <SidebarLinkGroup
+                <SidebarLinkGroup
                   activeCondition={
-                    pathname === "/forms" || pathname.includes("forms")
+                    pathname === "/trainings" || pathname.includes("forms")
                   }
                 >
                   {(handleClick, open) => {
@@ -991,7 +991,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                               fill="white"
                             />
                           </svg>
-                          Forms
+                          Trainings
                           <svg
                             className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
                               open && "rotate-180"
@@ -1010,7 +1010,6 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                             />
                           </svg>
                         </Link>
-                        {/* <!-- Dropdown Menu Start --> 
                         <div
                           className={`translate transform overflow-hidden ${
                             !open && "hidden"
@@ -1019,13 +1018,13 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                           <ul className="mb-5.5 mt-4 flex flex-col gap-2.5 pl-6">
                             <li>
                               <Link
-                                href="/forms/form-elements"
+                                href="/courses"
                                 className={`group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white ${
                                   pathname === "/forms/form-elements" &&
                                   "text-white"
                                 }`}
                               >
-                                Form Elements
+                                Courses
                               </Link>
                             </li>
                             <li>
@@ -1036,16 +1035,16 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                   "text-white"
                                 } `}
                               >
-                                Form Layout
+                                Assessments
                               </Link>
                             </li>
                           </ul>
                         </div>
-                        {/* <!-- Dropdown Menu End --> 
+                        
                       </React.Fragment>
                     );
                   }}
-                </SidebarLinkGroup> */}
+                </SidebarLinkGroup> 
                 {/* <!-- Menu Item Forms --> */}
   
                 {/* <!-- Menu Item Tables --> */}
@@ -1124,8 +1123,8 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                         </clipPath>
                       </defs>
                     </svg>
-                    Settings
-                  </Link> */}
+                    Trainings
+                  </Link>  */}
                 </li>
                 {/* <!-- Menu Item Settings --> */}
               </ul>
